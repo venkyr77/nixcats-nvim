@@ -1,3 +1,5 @@
+require("options")
+
 local lzn = require("lz.n")
 
 lzn.load({
