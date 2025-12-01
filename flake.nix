@@ -1,5 +1,5 @@
 {
-  description = "A Lua-natic's neovim flake, with extra cats! nixCats!";
+  description = "Neovim configuration with nixCats";
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -20,11 +20,6 @@
   } @ inputs: let
     inherit (nixCats) utils;
     luaPath = ./.;
-    extra_pkg_config = {};
-
-    dependencyOverlays = [
-      (utils.standardPluginOverlay inputs)
-    ];
 
     categoryDefinitions = _: {
       lspsAndRuntimeDeps = {
@@ -32,50 +27,22 @@
       };
 
       startupPlugins = {
-        gitPlugins = [];
         general = [];
       };
 
       optionalPlugins = {
-        gitPlugins = [];
         general = [];
       };
-
-      sharedLibraries = {
-        general = [];
-      };
-
-      environmentVariables = {};
-
-      extraWrapperArgs = {};
-
-      python3.libraries = {};
-
-      extraLuaPackages = {};
     };
 
     packageDefinitions = {
       nvim = _: {
         settings = {
-          suffix-path = true;
-          suffix-LD = true;
           wrapRc = true;
           aliases = ["vim"];
         };
         categories = {
           general = true;
-          gitPlugins = true;
-          customPlugins = true;
-          test = true;
-          example = {
-            youCan = "add more than just booleans";
-            toThisSet = [
-              "and the contents of this categories set"
-              "will be accessible to your lua with"
-              "nixCats('path.to.value')"
-              "see :help nixCats"
-            ];
-          };
         };
       };
     };
@@ -90,35 +57,11 @@
         "aarch64-darwin"
       ];
 
-      flake = let
-        nixosModule = utils.mkNixosModules {
-          moduleNamespace = [defaultPackageName];
-          inherit defaultPackageName dependencyOverlays luaPath categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
-        };
-        homeModule = utils.mkHomeModules {
-          moduleNamespace = [defaultPackageName];
-          inherit defaultPackageName dependencyOverlays luaPath categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
-        };
-      in {
-        overlays =
-          utils.makeOverlays luaPath {
-            inherit nixpkgs dependencyOverlays extra_pkg_config;
-          }
-          categoryDefinitions
-          packageDefinitions
-          defaultPackageName;
-
-        nixosModules.default = nixosModule;
-        homeModules.default = homeModule;
-
-        inherit utils nixosModule homeModule;
-        inherit (utils) templates;
-      };
-
       perSystem = {system, ...}: let
         nixCatsBuilder =
           utils.baseBuilder luaPath {
-            inherit nixpkgs system dependencyOverlays extra_pkg_config;
+            inherit nixpkgs system;
+            dependencyOverlays = [(utils.standardPluginOverlay inputs)];
           }
           categoryDefinitions
           packageDefinitions;
@@ -135,15 +78,6 @@
         };
 
         formatter = treefmtFormatEval.config.build.wrapper;
-
-        devShells = {
-          default = pkgs.mkShell {
-            name = defaultPackageName;
-            packages = [defaultPackage];
-            inputsFrom = [];
-            shellHook = '''';
-          };
-        };
       };
     };
 }
