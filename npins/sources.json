@@ -39,6 +39,19 @@
       "url": "https://github.com/MunifTanjim/nui.nvim/archive/de740991c12411b663994b2860f1a4fd0937c130.tar.gz",
       "hash": "0l1ga86dr2rhfjshiicsw3nn03wrhmdqks8v1gn3xmzdgfd2anz3"
     },
+    "catppuccin.nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "catppuccin",
+        "repo": "nvim"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "ce4a8e0d5267e67056f9f4dcf6cb1d0933c8ca00",
+      "url": "https://github.com/catppuccin/nvim/archive/ce4a8e0d5267e67056f9f4dcf6cb1d0933c8ca00.tar.gz",
+      "hash": "05b0fjlf3svc1jq7pq56fhakaa54j21iyp9d8jzczlpls6dr3kvn"
+    },
     "plenary.nvim": {
       "type": "Git",
       "repository": {

@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  require("neo-tree").setup({})
+  require("catppuccin").setup({})
 end
 
 return M
