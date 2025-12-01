@@ -1,7 +1,7 @@
-local M = {}
-
-function M.setup()
-  require("catppuccin").setup({})
-end
-
-return M
+return {
+  "catppuccin.nvim",
+  colorscheme = "catppuccin",
+  after = function()
+    require("catppuccin").setup({})
+  end,
+}
