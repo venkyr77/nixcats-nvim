@@ -14,44 +14,33 @@
   outputs = {
     flake-parts,
     nixCats,
-    nixpkgs,
     treefmt-nix,
     ...
   } @ inputs: let
-    inherit (nixCats) utils;
-    luaPath = ./.;
-    npins = import ./npins;
-
-    mkPlugin = pname: pin:
-      pin
-      // {
-        inherit pname;
-        version = pin.revision;
-      };
-
     categoryDefinitions = {pkgs, ...}: let
-      plugins = pkgs.lib.mapAttrs mkPlugin npins;
+      npins = import ./npins;
+
+      mkPlugin = pname: pin:
+        pin
+        // {
+          inherit pname;
+          version = pin.revision;
+        };
     in {
       optionalPlugins = {
-        general = [
-          plugins."neo-tree.nvim"
-          plugins."nui.nvim"
-          plugins."plenary.nvim"
-        ];
+        general =
+          npins
+          |> pkgs.lib.filterAttrs (pname: _: pname != "lz.n")
+          |> pkgs.lib.mapAttrsToList mkPlugin;
       };
 
       startupPlugins = {
-        general =
-          (with pkgs.vimPlugins; [
-            nvim-treesitter.withAllGrammars
-          ])
-          ++ [
-            plugins."lz.n"
-          ];
+        general = [
+          pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+          (mkPlugin "lz.n" npins."lz.n")
+        ];
       };
     };
-
-    defaultPackageName = "nvim";
 
     packageDefinitions = {
       nvim = _: {
@@ -66,16 +55,11 @@
     };
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
-      perSystem = {system, ...}: let
-        defaultPackage = nixCatsBuilder defaultPackageName;
-        nixCatsBuilder =
-          utils.baseBuilder luaPath {
-            dependencyOverlays = [(utils.standardPluginOverlay inputs)];
-            inherit nixpkgs system;
-          }
-          categoryDefinitions
-          packageDefinitions;
-        pkgs = import nixpkgs {inherit system;};
+      perSystem = {
+        pkgs,
+        system,
+        ...
+      }: let
         treefmtFormatEval = treefmt-nix.lib.evalModule pkgs ./treefmt/format.nix;
         treefmtLintEval = treefmt-nix.lib.evalModule pkgs ./treefmt/lint.nix;
       in {
@@ -86,7 +70,14 @@
 
         formatter = treefmtFormatEval.config.build.wrapper;
 
-        packages = utils.mkAllWithDefault defaultPackage;
+        packages = nixCats.utils.mkAllWithDefault (
+          nixCats.utils.baseBuilder
+          ./.
+          {inherit pkgs system;}
+          categoryDefinitions
+          packageDefinitions
+          "nvim"
+        );
       };
 
       systems = [
