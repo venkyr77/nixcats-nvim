@@ -28,5 +28,10 @@
       enable = true;
       priority = 30;
     };
+
+    stylua = {
+      enable = true;
+      priority = 40;
+    };
   };
 }

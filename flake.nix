@@ -21,7 +21,7 @@
     inherit (nixCats) utils;
     luaPath = ./.;
 
-    categoryDefinitions = _: {
+    categoryDefinitions = {pkgs, ...}: {
       lspsAndRuntimeDeps = {
         general = [];
       };
@@ -31,7 +31,9 @@
       };
 
       startupPlugins = {
-        general = [];
+        general = with pkgs.vimPlugins; [
+          nvim-treesitter.withAllGrammars
+        ];
       };
     };
 
