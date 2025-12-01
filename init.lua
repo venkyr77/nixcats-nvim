@@ -8,6 +8,7 @@ lzn.load({
   require("plugins.nui"),
   require("plugins.nvim-treesitter"),
   require("plugins.plenary"),
+  require("plugins.smartyank"),
 })
 
 vim.cmd.colorscheme("catppuccin")
