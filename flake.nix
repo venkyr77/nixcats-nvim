@@ -5,12 +5,17 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    treefmt-nix = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:numtide/treefmt-nix";
+    };
   };
 
   outputs = {
     flake-parts,
     nixpkgs,
     nixCats,
+    treefmt-nix,
     ...
   } @ inputs: let
     inherit (nixCats) utils;
@@ -21,48 +26,36 @@
       (utils.standardPluginOverlay inputs)
     ];
 
-    categoryDefinitions = {pkgs, settings, categories, extra, name, mkPlugin, ...} @ packageDef: {
+    categoryDefinitions = _: {
       lspsAndRuntimeDeps = {
-        general = with pkgs; [];
+        general = [];
       };
 
       startupPlugins = {
-        gitPlugins = with pkgs.neovimPlugins; [];
-        general = with pkgs.vimPlugins; [];
+        gitPlugins = [];
+        general = [];
       };
 
       optionalPlugins = {
-        gitPlugins = with pkgs.neovimPlugins; [];
-        general = with pkgs.vimPlugins; [];
+        gitPlugins = [];
+        general = [];
       };
 
       sharedLibraries = {
-        general = with pkgs; [];
+        general = [];
       };
 
-      environmentVariables = {
-        test = {
-          CATTESTVAR = "It worked!";
-        };
-      };
+      environmentVariables = {};
 
-      extraWrapperArgs = {
-        test = [
-          '' --set CATTESTVAR2 "It worked again!"''
-        ];
-      };
+      extraWrapperArgs = {};
 
-      python3.libraries = {
-        test = (_: []);
-      };
+      python3.libraries = {};
 
-      extraLuaPackages = {
-        test = [(_: [])];
-      };
+      extraLuaPackages = {};
     };
 
     packageDefinitions = {
-      nvim = {pkgs, name, ...}: {
+      nvim = _: {
         settings = {
           suffix-path = true;
           suffix-LD = true;
@@ -90,7 +83,12 @@
     defaultPackageName = "nvim";
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = nixpkgs.lib.platforms.all;
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
 
       flake = let
         nixosModule = utils.mkNixosModules {
@@ -102,9 +100,13 @@
           inherit defaultPackageName dependencyOverlays luaPath categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
         };
       in {
-        overlays = utils.makeOverlays luaPath {
-          inherit nixpkgs dependencyOverlays extra_pkg_config;
-        } categoryDefinitions packageDefinitions defaultPackageName;
+        overlays =
+          utils.makeOverlays luaPath {
+            inherit nixpkgs dependencyOverlays extra_pkg_config;
+          }
+          categoryDefinitions
+          packageDefinitions
+          defaultPackageName;
 
         nixosModules.default = nixosModule;
         homeModules.default = homeModule;
@@ -114,13 +116,25 @@
       };
 
       perSystem = {system, ...}: let
-        nixCatsBuilder = utils.baseBuilder luaPath {
-          inherit nixpkgs system dependencyOverlays extra_pkg_config;
-        } categoryDefinitions packageDefinitions;
+        nixCatsBuilder =
+          utils.baseBuilder luaPath {
+            inherit nixpkgs system dependencyOverlays extra_pkg_config;
+          }
+          categoryDefinitions
+          packageDefinitions;
         defaultPackage = nixCatsBuilder defaultPackageName;
         pkgs = import nixpkgs {inherit system;};
+        treefmtFormatEval = treefmt-nix.lib.evalModule pkgs ./treefmt/format.nix;
+        treefmtLintEval = treefmt-nix.lib.evalModule pkgs ./treefmt/lint.nix;
       in {
         packages = utils.mkAllWithDefault defaultPackage;
+
+        checks = {
+          formatting = treefmtFormatEval.config.build.check inputs.self;
+          linting = treefmtLintEval.config.build.check inputs.self;
+        };
+
+        formatter = treefmtFormatEval.config.build.wrapper;
 
         devShells = {
           default = pkgs.mkShell {
