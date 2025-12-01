@@ -5,6 +5,7 @@ return {
   lazy = false,
   before = function()
     lzn.trigger_load("nui.nvim")
+    lzn.trigger_load("nvim-web-devicons")
     lzn.trigger_load("plenary.nvim")
   end,
   after = function()

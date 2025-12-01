@@ -8,6 +8,7 @@ lzn.load({
   require("plugins.neo-tree"),
   require("plugins.nui"),
   require("plugins.nvim-treesitter"),
+  require("plugins.nvim-web-devicons"),
   require("plugins.plenary"),
   require("plugins.smartyank"),
 })
