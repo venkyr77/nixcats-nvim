@@ -29,9 +29,15 @@
         version = pin.revision;
       };
 
-    categoryDefinitions = {pkgs, ...}: {
-      lspsAndRuntimeDeps = {
-        general = [];
+    categoryDefinitions = {pkgs, ...}: let
+      plugins = pkgs.lib.mapAttrs mkPlugin npins;
+    in {
+      optionalPlugins = {
+        general = [
+          plugins."neo-tree.nvim"
+          plugins."nui.nvim"
+          plugins."plenary.nvim"
+        ];
       };
 
       startupPlugins = {
@@ -39,7 +45,9 @@
           (with pkgs.vimPlugins; [
             nvim-treesitter.withAllGrammars
           ])
-          ++ pkgs.lib.mapAttrsToList mkPlugin npins;
+          ++ [
+            plugins."lz.n"
+          ];
       };
     };
 
