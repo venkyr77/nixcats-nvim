@@ -3,8 +3,8 @@
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
@@ -13,8 +13,8 @@
 
   outputs = {
     flake-parts,
-    nixpkgs,
     nixCats,
+    nixpkgs,
     treefmt-nix,
     ...
   } @ inputs: let
@@ -26,58 +26,58 @@
         general = [];
       };
 
-      startupPlugins = {
-        general = [];
-      };
-
       optionalPlugins = {
         general = [];
       };
-    };
 
-    packageDefinitions = {
-      nvim = _: {
-        settings = {
-          wrapRc = true;
-          aliases = ["vim"];
-        };
-        categories = {
-          general = true;
-        };
+      startupPlugins = {
+        general = [];
       };
     };
 
     defaultPackageName = "nvim";
+
+    packageDefinitions = {
+      nvim = _: {
+        categories = {
+          general = true;
+        };
+        settings = {
+          aliases = ["vim"];
+          wrapRc = true;
+        };
+      };
+    };
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-
       perSystem = {system, ...}: let
+        defaultPackage = nixCatsBuilder defaultPackageName;
         nixCatsBuilder =
           utils.baseBuilder luaPath {
-            inherit nixpkgs system;
             dependencyOverlays = [(utils.standardPluginOverlay inputs)];
+            inherit nixpkgs system;
           }
           categoryDefinitions
           packageDefinitions;
-        defaultPackage = nixCatsBuilder defaultPackageName;
         pkgs = import nixpkgs {inherit system;};
         treefmtFormatEval = treefmt-nix.lib.evalModule pkgs ./treefmt/format.nix;
         treefmtLintEval = treefmt-nix.lib.evalModule pkgs ./treefmt/lint.nix;
       in {
-        packages = utils.mkAllWithDefault defaultPackage;
-
         checks = {
           formatting = treefmtFormatEval.config.build.check inputs.self;
           linting = treefmtLintEval.config.build.check inputs.self;
         };
 
         formatter = treefmtFormatEval.config.build.wrapper;
+
+        packages = utils.mkAllWithDefault defaultPackage;
       };
+
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ];
     };
 }
