@@ -20,20 +20,26 @@
   } @ inputs: let
     inherit (nixCats) utils;
     luaPath = ./.;
+    npins = import ./npins;
+
+    mkPlugin = pname: pin:
+      pin
+      // {
+        inherit pname;
+        version = pin.revision;
+      };
 
     categoryDefinitions = {pkgs, ...}: {
       lspsAndRuntimeDeps = {
         general = [];
       };
 
-      optionalPlugins = {
-        general = [];
-      };
-
       startupPlugins = {
-        general = with pkgs.vimPlugins; [
-          nvim-treesitter.withAllGrammars
-        ];
+        general =
+          (with pkgs.vimPlugins; [
+            nvim-treesitter.withAllGrammars
+          ])
+          ++ pkgs.lib.mapAttrsToList mkPlugin npins;
       };
     };
 
