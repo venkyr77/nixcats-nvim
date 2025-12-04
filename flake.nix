@@ -27,6 +27,12 @@
           version = pin.revision;
         };
     in {
+      lspsAndRuntimeDeps = {
+        general = [
+          pkgs.nixd
+        ];
+      };
+
       optionalPlugins = {
         general =
           npins

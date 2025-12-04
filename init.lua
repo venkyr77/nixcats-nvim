@@ -13,4 +13,6 @@ lzn.load({
   require("plugins.smartyank"),
 })
 
+require("lsp")
+
 vim.cmd.colorscheme("catppuccin")
