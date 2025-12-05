@@ -6,6 +6,7 @@ lzn.load({
   require("plugins.auto-save"),
   require("plugins.catppuccin"),
   require("plugins.conform"),
+  require("plugins.gitsigns"),
   require("plugins.lualine"),
   require("plugins.neo-tree"),
   require("plugins.nui"),

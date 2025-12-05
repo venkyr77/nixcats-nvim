@@ -39,6 +39,19 @@
       "url": "https://github.com/stevearc/conform.nvim/archive/ffe26e8df8115c9665d24231f8a49fadb2d611ce.tar.gz",
       "hash": "14blx1nnw2gpwcgcn6fk4jvhmfhv8xqyx37qmz5idcfzvlrfna58"
     },
+    "gitsigns.nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "5813e4878748805f1518cee7abb50fd7205a3a48",
+      "url": "https://github.com/lewis6991/gitsigns.nvim/archive/5813e4878748805f1518cee7abb50fd7205a3a48.tar.gz",
+      "hash": "0gs4r41vhidg8gipj4632ms3bp6qc3ilr4hrx77whva4q6f3nx63"
+    },
     "lualine.nvim": {
       "type": "Git",
       "repository": {
