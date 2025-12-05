@@ -26,6 +26,19 @@
       "url": "https://github.com/catppuccin/nvim/archive/ce4a8e0d5267e67056f9f4dcf6cb1d0933c8ca00.tar.gz",
       "hash": "05b0fjlf3svc1jq7pq56fhakaa54j21iyp9d8jzczlpls6dr3kvn"
     },
+    "conform.nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "stevearc",
+        "repo": "conform.nvim"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "ffe26e8df8115c9665d24231f8a49fadb2d611ce",
+      "url": "https://github.com/stevearc/conform.nvim/archive/ffe26e8df8115c9665d24231f8a49fadb2d611ce.tar.gz",
+      "hash": "14blx1nnw2gpwcgcn6fk4jvhmfhv8xqyx37qmz5idcfzvlrfna58"
+    },
     "lz.n": {
       "type": "Git",
       "repository": {
