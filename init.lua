@@ -14,6 +14,7 @@ lzn.load({
   require("plugins.plenary"),
   require("plugins.rainbow-delimiters"),
   require("plugins.smartyank"),
+  require("plugins.snacks"),
   require("plugins.which-key"),
 })
 
