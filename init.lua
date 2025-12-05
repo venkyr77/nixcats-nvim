@@ -12,6 +12,7 @@ lzn.load({
   require("plugins.nvim-treesitter"),
   require("plugins.nvim-web-devicons"),
   require("plugins.plenary"),
+  require("plugins.rainbow-delimiters"),
   require("plugins.smartyank"),
   require("plugins.which-key"),
 })
