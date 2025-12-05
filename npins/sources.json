@@ -116,6 +116,19 @@
       "revision": "c4e53e0d9316ca790a6f5d78aad73206a763873b",
       "url": "https://github.com/ibhagwan/smartyank.nvim/archive/c4e53e0d9316ca790a6f5d78aad73206a763873b.tar.gz",
       "hash": "0xwkrsjhliixsf4pywmcsc8ha0p4wx80008p0bwldm8zr5h7s4qd"
+    },
+    "which-key.nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "folke",
+        "repo": "which-key.nvim"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "3aab2147e74890957785941f0c1ad87d0a44c15a",
+      "url": "https://github.com/folke/which-key.nvim/archive/3aab2147e74890957785941f0c1ad87d0a44c15a.tar.gz",
+      "hash": "1dwri7gxqgb58pfy829s0ns709m0nrcj1cgz2wj1k09qfffri9mc"
     }
   },
   "version": 5
