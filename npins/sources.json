@@ -39,6 +39,19 @@
       "url": "https://github.com/stevearc/conform.nvim/archive/ffe26e8df8115c9665d24231f8a49fadb2d611ce.tar.gz",
       "hash": "14blx1nnw2gpwcgcn6fk4jvhmfhv8xqyx37qmz5idcfzvlrfna58"
     },
+    "lualine.nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nvim-lualine",
+        "repo": "lualine.nvim"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "47f91c416daef12db467145e16bed5bbfe00add8",
+      "url": "https://github.com/nvim-lualine/lualine.nvim/archive/47f91c416daef12db467145e16bed5bbfe00add8.tar.gz",
+      "hash": "1q34vy3rcwv4nz1b2n2hvp2yxs8clczzvyf3mpvcir8bxcgxk4is"
+    },
     "lz.n": {
       "type": "Git",
       "repository": {
