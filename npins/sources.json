@@ -91,6 +91,19 @@
       "url": "https://github.com/nvim-neo-tree/neo-tree.nvim/archive/a981ef287503c668434bffa78071d5b9ff92c12f.tar.gz",
       "hash": "1z7wwbpmjh453ilqk5g20zxrc7vk7wr4vx7l58x5rgclvg1mf4yc"
     },
+    "noice.nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "folke",
+        "repo": "noice.nvim"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "7bfd942445fb63089b59f97ca487d605e715f155",
+      "url": "https://github.com/folke/noice.nvim/archive/7bfd942445fb63089b59f97ca487d605e715f155.tar.gz",
+      "hash": "02mc75dqn7h4ylgynpd9vsjx3y51rcys95l9ax1wiilgb4ay3b0l"
+    },
     "nui.nvim": {
       "type": "Git",
       "repository": {

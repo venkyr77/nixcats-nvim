@@ -18,6 +18,7 @@ return {
         },
         scope = { enabled = false },
       },
+      notifier = { enabled = true },
     })
   end,
 }

@@ -9,6 +9,7 @@ lzn.load({
   require("plugins.gitsigns"),
   require("plugins.lualine"),
   require("plugins.neo-tree"),
+  require("plugins.noice"),
   require("plugins.nui"),
   require("plugins.nvim-autopairs"),
   require("plugins.nvim-treesitter"),
