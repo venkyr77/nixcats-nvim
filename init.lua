@@ -8,6 +8,7 @@ lzn.load({
   require("plugins.catppuccin"),
   require("plugins.conform"),
   require("plugins.gitsigns"),
+  require("plugins.lspkind"),
   require("plugins.lualine"),
   require("plugins.neo-tree"),
   require("plugins.noice"),
