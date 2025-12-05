@@ -29,7 +29,9 @@
     in {
       lspsAndRuntimeDeps = {
         general = [
+          pkgs.alejandra
           pkgs.nixd
+          pkgs.stylua
         ];
       };
 
