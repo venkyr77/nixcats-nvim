@@ -1,5 +1,18 @@
 {
   "pins": {
+    "LuaSnip": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "L3MON4D3",
+        "repo": "LuaSnip"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "3732756842a2f7e0e76a7b0487e9692072857277",
+      "url": "https://github.com/L3MON4D3/LuaSnip/archive/3732756842a2f7e0e76a7b0487e9692072857277.tar.gz",
+      "hash": "106vp7p8kcxmkmawlxdvqn877izgdfbv5z7lnk67rpfdrjdpsa9y"
+    },
     "auto-save.nvim": {
       "type": "Git",
       "repository": {
@@ -38,6 +51,19 @@
       "revision": "5420c4b5ea0aeb99c09cfbd4fd0b70d257b44f25",
       "url": "https://github.com/stevearc/conform.nvim/archive/5420c4b5ea0aeb99c09cfbd4fd0b70d257b44f25.tar.gz",
       "hash": "0s68g9rf12hp0lp11jssyf73dn0dli3hi5bsl13sq4jr74cip7iy"
+    },
+    "friendly-snippets": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "rafamadriz",
+        "repo": "friendly-snippets"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
+      "url": "https://github.com/rafamadriz/friendly-snippets/archive/572f5660cf05f8cd8834e096d7b4c921ba18e175.tar.gz",
+      "hash": "08q7vs7p4grav819b6hl5y9zla8bbb461b6m1w0mjz6n6rqjjc0p"
     },
     "gitsigns.nvim": {
       "type": "Git",

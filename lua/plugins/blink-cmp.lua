@@ -12,12 +12,15 @@ return {
   "blink.cmp",
   before = function()
     lzn.trigger_load("nvim-web-devicons")
+    lzn.trigger_load("LuaSnip")
+    lzn.trigger_load("friendly-snippets")
     lzn.trigger_load("lspkind.nvim")
   end,
   event = "InsertEnter",
   after = function()
     require("blink.cmp").setup({
       completion = {
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
         list = {
           selection = { auto_insert = false, preselect = false },
         },
@@ -55,6 +58,7 @@ return {
       },
       keymap = { preset = "enter" },
       signature = { enabled = true },
+      snippets = { preset = "luasnip" },
     })
   end,
 }
