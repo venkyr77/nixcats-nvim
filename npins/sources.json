@@ -87,9 +87,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "5813e4878748805f1518cee7abb50fd7205a3a48",
-      "url": "https://github.com/lewis6991/gitsigns.nvim/archive/5813e4878748805f1518cee7abb50fd7205a3a48.tar.gz",
-      "hash": "0gs4r41vhidg8gipj4632ms3bp6qc3ilr4hrx77whva4q6f3nx63"
+      "revision": "e895b811bc63d8e9b9c93216f1fe99c51280c769",
+      "url": "https://github.com/lewis6991/gitsigns.nvim/archive/e895b811bc63d8e9b9c93216f1fe99c51280c769.tar.gz",
+      "hash": "0j2vcgwigfaq00yyy8vji6275alrs4gwwykvgh1n4jj6np95k2lk"
     },
     "guess-indent.nvim": {
       "type": "Git",
