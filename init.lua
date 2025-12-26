@@ -1,5 +1,7 @@
 require("options")
 
+vim.keymap.set("n", "<Esc>", "<CMD>nohlsearch<CR>")
+
 local lzn = require("lz.n")
 
 lzn.load({
