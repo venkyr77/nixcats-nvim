@@ -1,9 +1,15 @@
-vim.lsp.config.nixd = {
-  capabilities = require("blink.cmp").get_lsp_capabilities(),
-  cmd = { "nixd" },
-  filetypes = { "nix" },
-  root_markers = {
-    ".git",
-    "flake.nix",
-  },
-}
+local M = {}
+
+M.get = function(capabilities)
+  return {
+    capabilities = capabilities,
+    cmd = { "nixd" },
+    filetypes = { "nix" },
+    root_markers = {
+      ".git",
+      "flake.nix",
+    },
+  }
+end
+
+return M
