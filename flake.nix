@@ -57,6 +57,7 @@
                 pkgs.alejandra
                 pkgs.nixd
                 pkgs.stylua
+                pkgs.typescript-language-server
               ];
             };
 
