@@ -5,6 +5,14 @@ vim.keymap.set("n", "<Esc>", "<CMD>nohlsearch<CR>")
 local lzn = require("lz.n")
 
 lzn.load({
+  require("plugins.which-key"),
+})
+
+lzn.load({
+  require("plugins.snacks"),
+})
+
+lzn.load({
   require("plugins.auto-save"),
   require("plugins.blink-cmp"),
   require("plugins.catppuccin"),
@@ -21,8 +29,6 @@ lzn.load({
   require("plugins.plenary"),
   require("plugins.rainbow-delimiters"),
   require("plugins.smartyank"),
-  require("plugins.snacks"),
-  require("plugins.which-key"),
 })
 
 require("lsp")
