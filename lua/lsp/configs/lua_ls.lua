@@ -1,10 +1,11 @@
 local M = {}
 
-M.get = function(capabilities)
+M.get = function(capabilities, on_attach)
   return {
     capabilities = capabilities,
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
+    on_attach = on_attach,
     root_markers = {
       ".emmyrc.json",
       ".git",
@@ -19,6 +20,7 @@ M.get = function(capabilities)
     settings = {
       Lua = {
         codeLens = { enable = true },
+        diagnostics = { globals = { "vim", "Snacks" } },
         hint = { enable = true, semicolon = "Disable" },
         runtime = {
           version = "LuaJIT",

@@ -1,6 +1,6 @@
 local M = {}
 
-M.get = function(capabilities)
+M.get = function(capabilities, on_attach)
   return {
     capabilities = capabilities,
     cmd = { "typescript-language-server", "--stdio" },
@@ -12,6 +12,7 @@ M.get = function(capabilities)
       "typescript.tsx",
       "typescriptreact",
     },
+    on_attach = on_attach,
     root_markers = {
       ".git",
       "package.json",
