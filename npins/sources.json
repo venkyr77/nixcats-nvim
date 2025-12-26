@@ -52,6 +52,19 @@
       "url": "https://github.com/lewis6991/gitsigns.nvim/archive/5813e4878748805f1518cee7abb50fd7205a3a48.tar.gz",
       "hash": "0gs4r41vhidg8gipj4632ms3bp6qc3ilr4hrx77whva4q6f3nx63"
     },
+    "guess-indent.nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "NMAC427",
+        "repo": "guess-indent.nvim"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "84a4987ff36798c2fc1169cbaff67960aed9776f",
+      "url": "https://github.com/NMAC427/guess-indent.nvim/archive/84a4987ff36798c2fc1169cbaff67960aed9776f.tar.gz",
+      "hash": "0fq6f4k0j10m3ic5a6px4l4q4jqs7xxbh0j72kaqi1np4p069w9k"
+    },
     "lspkind.nvim": {
       "type": "Git",
       "repository": {

@@ -18,6 +18,7 @@ lzn.load({
   require("plugins.catppuccin"),
   require("plugins.conform"),
   require("plugins.gitsigns"),
+  require("plugins.guess-indent"),
   require("plugins.lspkind"),
   require("plugins.lualine"),
   require("plugins.neo-tree"),
