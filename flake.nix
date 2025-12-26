@@ -55,6 +55,7 @@
             lspsAndRuntimeDeps = {
               general = [
                 pkgs.alejandra
+                pkgs.lua-language-server
                 pkgs.nixd
                 pkgs.stylua
                 pkgs.typescript-language-server

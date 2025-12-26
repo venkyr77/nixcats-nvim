@@ -3,14 +3,15 @@ vim.lsp.config.ts_ls = {
   cmd = { "typescript-language-server", "--stdio" },
   filetypes = {
     "javascript",
-    "javascriptreact",
     "javascript.jsx",
+    "javascriptreact",
     "typescript",
-    "typescriptreact",
     "typescript.tsx",
+    "typescriptreact",
   },
   root_markers = {
-    "flake.nix",
     ".git",
+    "package.json",
+    "tsconfig.json",
   },
 }
