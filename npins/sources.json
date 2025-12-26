@@ -208,6 +208,19 @@
       "url": "https://github.com/folke/snacks.nvim/archive/fe7cfe9800a182274d0f868a74b7263b8c0c020b.tar.gz",
       "hash": "18x8m1fhq9kjch1jmzax3nd0h8j5kgd5ykj8bg366h5x1mi9s5xx"
     },
+    "todo-comments.nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "folke",
+        "repo": "todo-comments.nvim"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
+      "url": "https://github.com/folke/todo-comments.nvim/archive/31e3c38ce9b29781e4422fc0322eb0a21f4e8668.tar.gz",
+      "hash": "091893pjvhs1qwcnd6ksa5mngzr0n9z9lkyg7c97ic0hzi2qhrsl"
+    },
     "which-key.nvim": {
       "type": "Git",
       "repository": {

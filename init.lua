@@ -29,6 +29,7 @@ lzn.load({
   require("plugins.plenary"),
   require("plugins.rainbow-delimiters"),
   require("plugins.smartyank"),
+  require("plugins.todo-comments"),
 })
 
 require("lsp")
