@@ -56,9 +56,11 @@
               general = [
                 pkgs.alejandra
                 pkgs.lua-language-server
+                pkgs.luaPackages.luacheck
                 pkgs.nixd
                 pkgs.stylua
                 pkgs.typescript-language-server
+                (import ./nix/packages/statix.nix {inherit pkgs;})
               ];
             };
 

@@ -208,6 +208,19 @@
       "url": "https://github.com/windwp/nvim-autopairs/archive/c2a0dd0d931d0fb07665e1fedb1ea688da3b80b4.tar.gz",
       "hash": "0pk0sarrj54gd3j9cdb126d733s7jmzwmkj8vrbm181di4cyykzj"
     },
+    "nvim-lint": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "mfussenegger",
+        "repo": "nvim-lint"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "1f19dacd945a7b1a57f29f32b2d7168384df3d36",
+      "url": "https://github.com/mfussenegger/nvim-lint/archive/1f19dacd945a7b1a57f29f32b2d7168384df3d36.tar.gz",
+      "hash": "1rs9aps40i10bvjc6jwr4px5is1g77sjhdk77pbzgrq327zxcy1h"
+    },
     "nvim-web-devicons": {
       "type": "Git",
       "repository": {

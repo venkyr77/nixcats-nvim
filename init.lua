@@ -28,6 +28,7 @@ lzn.load({
   require("plugins.noice"),
   require("plugins.nui"),
   require("plugins.nvim-autopairs"),
+  require("plugins.nvim-lint"),
   require("plugins.nvim-treesitter"),
   require("plugins.nvim-web-devicons"),
   require("plugins.plenary"),
